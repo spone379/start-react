@@ -1,0 +1,7 @@
+.is-invalid {
+  border: 1px solid red !important; }
+
+.invalid-feedback {
+  font-size: 12px;
+  position: absolute;
+  color: red; }
