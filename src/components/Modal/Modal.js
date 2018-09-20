@@ -16,7 +16,6 @@ import './Modal.css';
 //          <SomeComponent />
 //        </Modal>
 //      </DelayedComponent>
-
 const Modal = ({ closeModal, isOpen, children }) => {
 
   const activeClass = isOpen

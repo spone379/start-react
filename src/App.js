@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import Loadable from 'react-loadable';
+import React, { Component, Fragment } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import Loadable from "react-loadable";
 
-import './App.css';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import AsyncComponentLoader from './components/AsyncComponentLoader/AsyncComponentLoader';
-import MainPage from './containers/MainPage/MainPage';
-import NotFound from './components/UI/NotFound';
-
+import "./App.css";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AsyncComponentLoader from "./components/AsyncComponentLoader/AsyncComponentLoader";
+import MainPage from "./containers/MainPage/MainPage";
+import NotFound from "./components/UI/NotFound";
 
 // export const LoadSomeContainer = Loadable({
 //   loader: () => import(/* webpackChunkName: "SomeContainerChunk"*/ './containers/SomeContainer/SomeContainer'),
@@ -29,7 +28,6 @@ import NotFound from './components/UI/NotFound';
 //   </Fragment>
 // );
 
-
 class App extends Component {
   render() {
     return (
@@ -37,10 +35,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPage} />
           {/* <PrivateRoute path="/private" component={PrivateRoutes} /> */}
-          <Route path="/not-found" component={NotFound}/>
+          <Route path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
         </Switch>
-
       </Fragment>
     );
   }

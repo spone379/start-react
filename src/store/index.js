@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 
 import rootReducer from '../reducers';
 
+
 const store = createStore(
   rootReducer,
   compose(
