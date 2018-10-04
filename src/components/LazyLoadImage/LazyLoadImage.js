@@ -4,6 +4,16 @@ import './LazyLoadImage.css'
 
 
 // Use for images that are already on the page
+// 
+// Example: 
+//     <LazyLoadImage
+//       src=""                   :str
+//       style={{                 :obj
+//        width: "50px",            :str !  // this width and height 
+//        height: "50px"            :str !  // will take a spinner to be the size of a picture
+//        borderRadius: "50%"
+//       }}  
+//      />
 class LazyLoadImage extends Component {
 
   state = {
@@ -58,4 +68,5 @@ class LazyLoadImage extends Component {
     );
   }
 }
-export default LazyLoadImage
+
+export default LazyLoadImage;
