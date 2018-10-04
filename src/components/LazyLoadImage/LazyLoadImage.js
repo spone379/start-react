@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import './LazyLoadImage.css'
 
 
-class ImageLazyLoad extends Component {
+class LazyLoadImage extends Component {
 
   state = {
     imageStatus: false
@@ -57,4 +57,4 @@ class ImageLazyLoad extends Component {
     );
   }
 }
-export default ImageLazyLoad
+export default LazyLoadImage
