@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './LazyLoadImage.css'
 
 
+// Use for images that are already on the page
 class LazyLoadImage extends Component {
 
   state = {
