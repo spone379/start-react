@@ -1,0 +1,21 @@
+.lazy-load__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lazy-load__error {
+  position: relative;
+  top: 150px;
+  z-index: 20;
+  left: 80px;
+  font-size: 30px;
+}
+.lazy-load__image {
+  display: block;
+}
+.lazy-load__image--hidden {
+  display: none;
+}
+.lazy-load__spinner {
+
+}
