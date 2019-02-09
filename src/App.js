@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Loadable from "react-loadable";
+// import Loadable from "react-loadable";
 
 import "./App.css";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import AsyncComponentLoader from "./components/AsyncComponentLoader/AsyncComponentLoader";
-import MainPage from "./containers/MainPage/MainPage";
-import NotFound from "./components/UI/NotFound";
+// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+// import AsyncComponentLoader from "./components/AsyncComponentLoader/AsyncComponentLoader";
+import MainPage from "./scenes/MainPage/MainPage";
+import NotFound from "./scenes/NotFound/NotFound";
 
 // export const LoadSomeContainer = Loadable({
 //   loader: () => import(/* webpackChunkName: "SomeContainerChunk"*/ './containers/SomeContainer/SomeContainer'),

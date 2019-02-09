@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
-import spinner from '../../img/spinner.gif';
+import React from 'react';
 
 
-class Spinner extends Component {
-  render() {
-    return (
-      <div>
-        <img
-          src={spinner}
-          style={{ width: "200px", display: "block", margin: "auto" }}
-          alt="Loading..." />
-      </div>
-    );
-  }
-}
+const Spinner = ({ className }) => (
+  <img
+    src="/media/spinner.gif"
+    width="100%"
+    className={className}
+    alt="Loading..." />
+);
+
 export default Spinner;

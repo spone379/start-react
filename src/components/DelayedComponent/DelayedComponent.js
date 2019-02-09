@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
-// Use this HOC when we need animation on Unmount (with Modal)
+// Use this HOC when need animation on Unmount (with Modal)
 //
 // Example: 
 //     <DelayedComponent
@@ -9,8 +9,8 @@ import React, { Component } from 'react';
 //      >
 //          <SomeComponent />
 //      </DelayedComponent>
-class DelayedComponent extends Component {
 
+class DelayedComponent extends Component {
   state = {
     shouldRender: this.props.isMount
   }

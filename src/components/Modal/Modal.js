@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './Modal.css';
 
@@ -16,28 +16,46 @@ import './Modal.css';
 //          <SomeComponent />
 //        </Modal>
 //      </DelayedComponent>
-const Modal = ({ closeModal, isOpen, children }) => {
 
-  const activeClass = isOpen
-    ? 'modal__container open'
-    : 'modal__container open out';
+class Modal extends Component {
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyDown, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown, false);
+  }
 
-  const handleCloseModal = (e) => {
+  handleKeyDown = (e) => {
+    if (e.code === "Escape") {
+      this.props.closeModal();
+    }
+  }
+
+  handleCloseModal = (e) => {
     if (e.target.className !== "modal__background") {
       return;
     }
-    closeModal();
+    this.props.closeModal();
   }
 
-  return (
-    <div className={activeClass} onClick={handleCloseModal}>
-      <div className="modal__background" >
-        <section className="modal__content">
-          {children}
-        </section>
+  render() {
+    const activeClass = this.props.isOpen
+      ? 'modal__container open'
+      : 'modal__container open out';
+
+    return (
+      <div
+        className={activeClass}
+        style={this.props.zIndex ? { zIndex: this.props.zIndex } : null}
+        onClick={this.handleCloseModal}>
+        <div className="modal__background" >
+          <section className="modal__content">
+            {this.props.children}
+          </section>
+        </div>
       </div>
-    </div>
-  );
-};
+    )
+  }
+}
 
 export default Modal;

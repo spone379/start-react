@@ -1,0 +1,15 @@
+.modal-img {
+   width: unset;
+    height: unset;
+    max-height: 90vh;
+    min-width: 100px;
+    max-width: 90vw;
+    min-height: 100px;
+
+    &--round {
+      border-radius: 50%;
+      width: 50vh;
+      height: 50vh;
+      background-color: #fff;
+    }
+  }

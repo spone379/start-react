@@ -1,13 +1,24 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
-// Use like component in redux-form Field
+
 const DropzoneInput = (field) => {
   const files = field.input.value;
   const { touched, error } = field.meta;
+  const styleDiv = { width: "200px", height: "200px", marginLeft: "15px" };
+
+  const preloadPhoto = () => {
+    if (!files) {
+      return (
+        <div style={styleDiv}>
+          <img src={field.preloadAva} alt="preview" />
+        </div>
+      )
+    }
+  }
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Dropzone
         name={field.name}
         accept="image/*"
@@ -16,20 +27,20 @@ const DropzoneInput = (field) => {
 
         <p>
           Dropp some Image here, or click to select files to upload.
-       </p>
+        </p>
       </Dropzone>
 
       {touched && error && <span className="error">{error}</span>}
 
-
+      {preloadPhoto()}
       {files && Array.isArray(files) && (
-        <ul>
+        <>
           {files.map((file, i) => (
-            <div key={i} style={{ width: "200px", height: "200px" }}>
+            <div key={i} style={styleDiv}>
               <img src={file.preview} alt="preview" />
             </div>
           ))}
-        </ul>
+        </>
       )}
     </div>
   );
