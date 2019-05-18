@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from 'react-dropzone';
+import Dropzone from 'react-dropzone'; // works with version "^4.2.13"
 
 
 const DropzoneInput = (field) => {

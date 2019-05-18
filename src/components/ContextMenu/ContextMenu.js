@@ -1,45 +1,45 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
-import './ContextMenu.scss';
+import './ContextMenu.css';
 
 
-class Contextmenu extends Component {
-  componentDidMount() {
-    document.addEventListener('mousedown', this.props.closeContextMenu);
-  }
+const Contextmenu = (props) => {
+  useEffect(() => {
+    document.addEventListener('mousedown', props.closeContextMenu);
+    document.addEventListener('scroll', props.closeContextMenu);
 
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.props.closeContextMenu);
-  }
+    return () => {
+      document.removeEventListener('mousedown', props.closeContextMenu);
+      document.removeEventListener('scroll', props.closeContextMenu);
+    }
+  }, [props.closeContextMenu])
 
-  handleContextMenuClick = (e, item) => {
+  const handleContextMenuClick = (e, item) => {
     e.preventDefault();
 
     item.action();
-    this.props.closeContextMenu();
+    props.closeContextMenu();
   }
 
-  renderItems = (item, index) => (
+  const renderItems = (item, index) => (
     <li
       key={index}
       onMouseDown={item.action}
-      onContextMenu={(e) => this.handleContextMenuClick(e, item)}
+      onContextMenu={(e) => handleContextMenuClick(e, item)}
       className="context-menu__item">
       {item.text}
     </li>
   )
 
-  render() {
-    const { coords, items } = this.props;
+  return (
+    <ul
+      className="context-menu"
+      style={{ left: props.coords[0], top: props.coords[1] }} >
 
-    return (
-      <ul
-        className="context-menu"
-        style={{ left: coords[0], top: coords[1] }}>
-        {items.map((item, index) => this.renderItems(item, index))}
-      </ul >
-    );
-  }
+      {props.items.map((item, index) => renderItems(item, index))}
+
+    </ul >
+  );
 }
 
 export default Contextmenu;
