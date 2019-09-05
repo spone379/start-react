@@ -1,29 +1,20 @@
 .tel-select, .email-select {
   position: relative;
-  width: 120px;
-
+  
   &__input-wrap {
     display: flex;
     align-items: center;
     user-select: none;
-    padding: 3px;
+    padding: 3px 15px 3px 3px;
     border-radius: 2px;
   }
-  // &__input {
-  //   cursor: pointer;
-    
-  //   padding: 3px;
-  //   border: none;
-  //   border-radius: 2px;
-  //   -outline: none;
-  //   width: 100%;
-
-  //   &:disabled {
-  //     background: rgb(241, 241, 241);
-  //     color: rgb(158, 157, 157)
-  //   }
-  // }
-
+      
+  &__input-value {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &__input {
     background: 0;
     border: 0;
@@ -55,23 +46,27 @@
     z-index: 2;
     background-color: #fff;
     width: 100%;
+   
 
     &--hidden {
       display: none;
     }
   }
   &__item {
-    
+ 
     &--active {
       color: rgb(33, 72, 243);
     }
     
-    &:hover, &--focused {
+    &--focused {
       background-color: aliceblue;
       cursor: pointer;
     }
   }
   &__option {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     padding: 2px 5px;
     width: 100%;
   }

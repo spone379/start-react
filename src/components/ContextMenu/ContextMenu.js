@@ -1,19 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './ContextMenu.css';
 
 
 const Contextmenu = (props) => {
-  useEffect(() => {
-    document.addEventListener('mousedown', props.closeContextMenu);
-    document.addEventListener('scroll', props.closeContextMenu);
-
-    return () => {
-      document.removeEventListener('mousedown', props.closeContextMenu);
-      document.removeEventListener('scroll', props.closeContextMenu);
-    }
-  }, [props.closeContextMenu])
-
   const handleContextMenuClick = (e, item) => {
     e.preventDefault();
 

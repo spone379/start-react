@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useDidMount, useWillUnmount } from '../../hooks';
 
 
@@ -19,6 +20,17 @@ const SelectMenu = (props) => {
     }
   }
 
+  const updateFocused = (index, value) => {
+    if (value === props.focusedValue) return;
+
+    props.setFocused({ index, value })
+  }
+
+  const updateAndClose = (e, option) => {
+    props.updateInputValue(e, option);
+    props.closeMenu(e);
+  }
+
   return (
     <ul className={props.classPrefix + "__list"}>
       {props.options.map((option, index) => {
@@ -28,8 +40,9 @@ const SelectMenu = (props) => {
           <li
             className={props.classPrefix + "__item"}
             key={option.id || index}
+            onMouseEnter={() => updateFocused(index, optionValue)}
             // pass all object in order for onInputChange can get access for all option properties
-            onClick={(e) => props.updateInputValue(e, option)} >
+            onClick={(e) => updateAndClose(e, option)} >
 
             <props.SelectOption
               value={optionValue}

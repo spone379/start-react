@@ -38,16 +38,16 @@ const Select = (props) => {
   });
 
   useEffect(() => {
+    // when defaultValue has changed => update inputValue && focus on firstElement
     setInputValue(defaultValue);
-
-    toggleInputFocus(false);
+    // toggleInputFocus(false);
 
     setFocused({
       index: 0,
       value: options.length ? getOptionValue(options[0]) : ""
     });
 
-  }, [defaultValue, getOptionValue, options, toggleInputFocus])
+  }, [defaultValue])
 
   const classPrefix = props.classPrefix
     ? props.classPrefix + "-select"
@@ -73,7 +73,7 @@ const Select = (props) => {
   }
 
   const closeMenu = (e, forceClose = false) => {
-    console.log('e.target', e.target.className);
+    // console.log('e.target', e.target.className);
 
     if (e.target.className === classPrefix + "__input" && !forceClose) return;
 
@@ -121,14 +121,14 @@ const Select = (props) => {
 
       closeMenu(e, true)
     }
-  });
+  }, [options, focused]);
 
   const renderOption = () => {
     return components && components.Option
       ? components.Option
       : SelectOption
   }
-  console.log('SELECT RENDER');
+  // console.log('SELECT RENDER');
 
   return (
     <div className={classPrefix}>
@@ -140,7 +140,7 @@ const Select = (props) => {
         onKeyDown={handleKeyDown}
         tabIndex="0" >
 
-        {inputValue}
+        <span className={classPrefix + "__input-value"}>{inputValue}</span>
 
         <input
           type="text"
@@ -167,6 +167,7 @@ const Select = (props) => {
           closeMenu={closeMenu}
           focusedValue={focused.value}
           classPrefix={classPrefix}
+          setFocused={setFocused}
           SelectOption={renderOption()}
         />
       }

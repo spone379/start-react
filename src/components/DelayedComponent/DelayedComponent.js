@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
+import { usePrevious } from '../../hooks';
 
-// Use this HOC when need animation on Unmount (with Modal)
 //
 // Example: 
 //     <DelayedComponent
@@ -10,27 +10,27 @@ import { Component } from 'react';
 //          <SomeComponent />
 //      </DelayedComponent>
 
-class DelayedComponent extends Component {
-  state = {
-    shouldRender: this.props.isMount
-  }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.isMount && !this.props.isMount) {
-      setTimeout(
-        () => this.setState({ shouldRender: false }),
-        this.props.delayUnmountTime || 500
-      );
-    } else if (!prevProps.isMount && this.props.isMount) {
-      this.setState({ shouldRender: true });
+// Use when we need animate element before he will unmount
+const DelayedComponent = ({ isMount, ...props }) => {
+  const [shouldRender, setShouldRender] = useState(isMount);
+  const prevIsMount = usePrevious(isMount);
+
+  useEffect(() => {
+    if (!isMount && prevIsMount) {
+      setTimeout(() => {
+        setShouldRender(false);
+      }, props.delayUnmountTime || 500);
     }
-  }
+    else if (!prevIsMount && isMount) {
+      setShouldRender(true)
+    }
 
-  render() {
-    return this.state.shouldRender
-      ? this.props.children
-      : null;
-  }
+  }, [shouldRender, isMount])
+
+  return shouldRender
+    ? props.children
+    : null;
 }
 
 export default DelayedComponent;
